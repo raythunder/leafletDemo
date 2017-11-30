@@ -17,18 +17,21 @@
             top: 20px;
             z-index: 999;
         }
+
         #btn2 {
             position: absolute;
             right: 20px;
             top: 50px;
             z-index: 999;
         }
+
         #btn3 {
             position: absolute;
             right: 20px;
             top: 80px;
             z-index: 999;
         }
+
         #btn4 {
             position: absolute;
             right: 20px;
@@ -71,7 +74,7 @@
         myLayerGroup.removeLayer(marker2)  // 从图层组合中移除元素
     }
     document.getElementById('btn2').onclick = function () {
-        marker2.bindPopup("我已经不在图层组合里了。删不掉我").addTo(map) 
+        marker2.bindPopup("我已经不在图层组合里了。删不掉我").addTo(map)
         marker2.openPopup();
     }
     document.getElementById('btn3').onclick = function () {
@@ -80,6 +83,29 @@
     document.getElementById('btn4').onclick = function () {
         map.addLayer(myLayerGroup)  // 添加图层组合
     }
+
+    // featureGroup 示例
+    var marker3 = L.marker([28.70436533521879, 120.60267448425293]).bindPopup("I am Marker3");
+    var shapPoint2 = [
+        [28.704741749134378, 120.61469078063966],
+        [28.700977549043778, 120.60619354248048]
+    ]
+    // 矩形
+    var shap2 = L.rectangle(shapPoint2).bindPopup("I am a rectangle");
+    var myfeatureGroup = L.featureGroup([marker3, shap2])
+        .addTo(map).setStyle({ color: 'purple', opacity: .5 })
+        .bindPopup("我们共用同一个弹出 because we are a group")
+        .openPopup();
+
+    // 自定义弹出
+    var mark4 = L.marker([28.697552009289318, 120.60031414031984]).addTo(map)
+    mark4.bindPopup("<h1>My Marker</h1><p>This is information about the marker</p><ul><li>Info 1</li><li>Info 2</li><li>Info 3</li></ul>").openPopup()
+
+    // 创建popup实例，再分配给对象
+    var mypopup = L.popup({keepInView:true,closeButton:false})
+    .setContent("<h1>我是由实例分配的</h1><p>This is information about the marker</p><ul><li>Info 1</li><li>Info 2</li><li>Info 3</li></ul>");
+    var mark5 = L.marker([28.69435222802519, 120.61666488647462]).bindPopup(mypopup).addTo(map)
+    
 </script>
 
 </html>
