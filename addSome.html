@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>点线面</title>
+    <link rel="stylesheet" href="src/css/leaflet.css">
+    <link rel="stylesheet" href="src/css/demo.css">
+    <script src="src/js/leaflet.js"></script>
+    <script src="src/js/leaflet.ChineseTmsProviders.js"></script>
+</head>
+
+<body>
+    <div id="map"></div>
+</body>
+<script src="src/app/mapInit.js"></script>
+<script src="src/app/tools.js"></script>
+<script>
+    var points = [
+        [28.688366492227118, 120.61868190765382],
+        [28.6949545472659, 120.61331748962404],
+        [28.69024883597087, 120.59941291809083]
+    ]
+    var markOption = {
+        title: "MyPoint",
+        alt: "The Big I",
+        draggable: true
+    }
+    // 点
+    /*
+    options:  icon\clickable\draggable\keyboard\title\alt\zIndexOffset\opacity\riseOnHover\riseOffset
+    */
+    L.marker(points[0], markOption).addTo(map)
+    L.marker(points[1], markOption).addTo(map)
+    L.marker(points[2], markOption).addTo(map)
+
+    // 线
+    L.polyline(points, { color: 'red', weight: 3 }).addTo(map);
+
+    // 面
+    var points2 = [
+        [28.683509889086483, 120.60370445251465],
+        [28.685392320137506, 120.61087131500246],
+        [28.68226746605653, 120.61258792877199],
+        [28.678314203814065, 120.60370445251465]
+    ]
+    
+    L.polygon(points2, { color: 'red', weight: 3, fillColor: 'blue', fillOpacity: 0.5 }).addTo(map);
+</script>
+
+</html>
