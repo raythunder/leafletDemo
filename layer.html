@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/css/leaflet.css">
+    <link rel="stylesheet" href="src/css/demo.css">
+    <script src="src/js/leaflet.js"></script>
+    <script src="src/js/leaflet.ChineseTmsProviders.js"></script>
+    <style>
+        #btn1 {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            z-index: 999;
+        }
+        #btn2 {
+            position: absolute;
+            right: 20px;
+            top: 50px;
+            z-index: 999;
+        }
+        #btn3 {
+            position: absolute;
+            right: 20px;
+            top: 80px;
+            z-index: 999;
+        }
+        #btn4 {
+            position: absolute;
+            right: 20px;
+            top: 110px;
+            z-index: 999;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <button id="btn1">从图层组合中移除图层元素Mark2</button>
+    <button id="btn2">添加图层元素Mark2到地图</button>
+    <button id="btn3">移除图层组合</button>
+    <button id="btn4">添加图层组合</button>
+</body>
+<script src="src/app/mapInit.js"></script>
+<!-- <script src="src/app/tools.js"></script> -->
+<script>
+    // 标注
+    var marker = L.marker([28.691189995151863, 120.60589313507081]).bindPopup("I am Marker1");
+    var marker2 = L.marker([28.68716177447119, 120.60769557952882]).bindPopup("I am Marker2");
+
+    var shapPoint = [
+        [28.693524033410263, 120.61151504516603],
+        [28.688855904856077, 120.60121536254884]
+    ]
+    // 矩形
+    var shap = L.rectangle(shapPoint).bindPopup("I am a rectangle");
+
+    // 组合图层
+    var myLayerGroup = L.layerGroup([marker, shap])
+    myLayerGroup.addTo(map);
+    // map.addLayer(myLayerGroup)
+
+    // 向图层组合上继续添加元素
+    myLayerGroup.addLayer(marker2)
+
+    document.getElementById('btn1').onclick = function () {
+        myLayerGroup.removeLayer(marker2)  // 从图层组合中移除元素
+    }
+    document.getElementById('btn2').onclick = function () {
+        marker2.bindPopup("我已经不在图层组合里了。删不掉我").addTo(map) 
+        marker2.openPopup();
+    }
+    document.getElementById('btn3').onclick = function () {
+        map.removeLayer(myLayerGroup)   // 删除图层组合
+    }
+    document.getElementById('btn4').onclick = function () {
+        map.addLayer(myLayerGroup)  // 添加图层组合
+    }
+</script>
+
+</html>
