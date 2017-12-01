@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/css/leaflet.css">
+    <link rel="stylesheet" href="src/css/demo.css">
+    <script src="src/js/leaflet.js"></script>
+    <script src="src/js/leaflet.ChineseTmsProviders.js"></script>
+</head>
+
+<body>
+    <div id="map"></div>
+</body>
+<script src="src/app/mapInit.js"></script>
+<!-- <script src="src/app/tools.js"></script> -->
+<script>
+    map.on('click', function (e) {
+        var myMarker = L
+            .marker(e.latlng, {
+                draggable: true
+            })
+            .addTo(map);
+
+        myMarker.on('dragend', whereAmI);
+
+        function whereAmI() {
+            myMarker.bindPopup("I have been moved to:" + String(myMarker.getLatLng()));
+        }
+    });
+
+    var marker1 = L
+        .marker([28.69209, 120.61388])
+        .addTo(map)
+        .bindPopup(createPopup("Text as aparameter"));
+
+    function createPopup(x) {
+        return L
+            .popup({ keepInView: true, closeButton: false })
+            .setContent(x)
+    }
+</script>
+
+</html>

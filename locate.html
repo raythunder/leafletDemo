@@ -26,34 +26,46 @@
     });
     var normal = L.layerGroup([normalm])
     var map = L.map('map', {
-        center: [31.214691658555033, 121.61925315856935],
-        // zoom: 15,
+        // center: [31.214691658555033, 121.61925315856935],
+        zoom: 15,
         layers: [normal],  // 图层
         zoomControl: false
     });
-    map.locate({ setView: true, maxZoom: 16 });
-    var PointRotation = new PointRotation([31.214691658555033, 121.61925315856935], 0);
-    function onLocationFound(e) {
+    map.locate({
+        watch: true,  // 开始使用W3C watchPosition方法连续观察位置变化（而不是检测一次）, 停止观察使用map.stopLocate()
+        maxZoom:16, // 使用setView选项时自动查看设置的最大缩放
+        setView: true, // 定位后地图是否设置到当前位置
+        enableHighAccuracy: true,  // 是否启用高精度
+        timeout: 30 * 1000  // 触发locationerror事件之前等待地理定位响应的毫秒数 
+    });
+    map.on('locationfound', foundLocation);
+    map.on('locationerror', notFoundLocation);
+
+    // var PointRotation = new PointRotation([31.214691658555033, 121.61925315856935], 0);
+
+    function foundLocation(e) {
         var radius = e.accuracy / 2;
         radius = radius > 300 ? 50 : radius;
         var point = PointTransformation.gcj_encrypt(e.latlng.lat, e.latlng.lng);
         latlng = L.latLng(point["lat"], point["lon"]);
         //latlng = e.latlng;
-        latlng = PointRotation.pointRotation(latlng);
-        var myicon=L.icon({
-            iconUrl:'src/css/images/marker-icon.png',
-            iconSize:[25,41],
+        // latlng = PointRotation.pointRotation(latlng);
+        var myicon = L.icon({
+            iconUrl: 'src/css/images/marker-icon.png',
+            iconSize: [25, 41],
             iconAnchor: [12.5, 41],
             popupAnchor: [1.5, -24]
         })
-        L.marker(latlng,{icon:myicon}).addTo(map)
+        L.marker(latlng, { icon: myicon }).addTo(map)
             .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
         L.circle(latlng, radius).addTo(map);
-        map.setView(latlng)
+        // map.setView(latlng)
     }
-
-    map.on('locationfound', onLocationFound);
+    function notFoundLocation(e) {
+        console.log(e)
+        alert(e.message)
+    }
 </script>
 
 </html>

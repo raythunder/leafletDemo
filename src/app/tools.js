@@ -1,6 +1,8 @@
+var arr=[]
 map.on('click',function(e){
-    console.log([e.latlng.lat,e.latlng.lng])
-    L.marker([e.latlng.lat,e.latlng.lng],{
+    arr.push([e.latlng.lat,e.latlng.lng])
+    console.log(String(arr))
+    L.marker(e.latlng,{
         title:"MyPoint",alt:"The Big I",draggable:true
     }).addTo(map)
 })
