@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>定位</title>
     <link rel="stylesheet" href="src/css/leaflet.css">
@@ -15,6 +15,39 @@
 <body>
     <div id="map"></div>
 </body>
-<script src="src/app/mapInit.js"></script>
-<script src="src/app/tools.js"></script>
+<!-- <script src="src/app/mapInit.js"></script> -->
+<!-- <script src="src/app/tools.js"></script> -->
+<script src="src/app/map.extend.js"></script>
+<script>
+    // 高德地图
+    var normalm = L.tileLayer.chinaProvider('GaoDe.Normal.Map', {
+        maxZoom: 18,
+        minZoom: 15
+    });
+    var normal = L.layerGroup([normalm])
+    var map = L.map('map', {
+        // center: [31.214691658555033, 121.61925315856935],
+        // zoom: 12,
+        layers: [normal],  // 图层
+        zoomControl: false
+    });
+    map.locate({ setView: true, maxZoom: 16 });
+    var PointRotation = new PointRotation([31.214691658555033, 121.61925315856935], 0);
+    function onLocationFound(e) {
+        var radius = e.accuracy / 2;
+        radius = radius > 300 ? 50 : radius;
+        var point = PointTransformation.gcj_encrypt(e.latlng.lat, e.latlng.lng);
+        latlng = L.latLng(point["lat"], point["lon"]);
+        //latlng = e.latlng;
+        latlng = PointRotation.pointRotation(latlng);
+        L.marker(latlng).addTo(map)
+            .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+        L.circle(latlng, radius).addTo(map);
+        map.setView(latlng)
+    }
+
+    map.on('locationfound', onLocationFound);
+</script>
+
 </html>
