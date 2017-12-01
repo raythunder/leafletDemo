@@ -14,7 +14,6 @@
 
 <body>
     <div id="map"></div>
-    <img src="src/css/images/marker-icon.png" alt="" style="position: absolute; top: 20px; right: 20px;z-index: 999">
 </body>
 <!-- <script src="src/app/mapInit.js"></script> -->
 <!-- <script src="src/app/tools.js"></script> -->
@@ -41,7 +40,13 @@
         latlng = L.latLng(point["lat"], point["lon"]);
         //latlng = e.latlng;
         latlng = PointRotation.pointRotation(latlng);
-        L.marker(latlng).addTo(map)
+        var myicon=L.icon({
+            iconUrl:'src/css/images/marker-icon.png',
+            iconSize:[25,41],
+            iconAnchor: [12.5, 41],
+            popupAnchor: [1.5, -24]
+        })
+        L.marker(latlng,{icon:myicon}).addTo(map)
             .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
         L.circle(latlng, radius).addTo(map);
