@@ -1,0 +1,1555 @@
+
+
+
+
+
+<!DOCTYPE HTML>
+<html style="font-size:100px;">  
+  <head>
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.5,maximum-scale=0.5,user-scalable=no">
+    <title>上海世纪公园</title>
+    <meta content="电子导游,电子导游APP,电子导游讲解器,APP电子导游,语音电子导游" name="keywords">
+    <meta content="驴迹电子导游APP(原咪咪电子导游)是一款景区导游信息服务app,驴迹电子导游讲解器旨在帮助游客自助的进行旅游导游服务,满足用户在旅行中各种与旅游相关的需求.为游客推荐最佳旅游线路,选择更轻松,驴迹APP电子导游不一样的旅游体验.咨询电话:4008-656-151."
+    name="description">
+    <script type='text/javascript'>
+		(function(f,j){
+			var i=document,d=window;
+			var b=i.documentElement;
+			var c;
+			function g(){
+				var k=b.getBoundingClientRect().width;
+				console.log(k)
+				if(!j){j=1080}
+				if(k>j){k=j}
+				var l=k*100/f;
+				console.log(l)
+				b.style.fontSize=(l>100?100:l)+"px";
+			}g();d.addEventListener("pageshow",function(k){if(k.persisted){clearTimeout(c);c=setTimeout(g,300)}},false)})(750,1080);
+    </script>
+    <link href="/web/favicon.ico" rel="icon" type="image/x-icon" />
+    <link type="text/css" rel="stylesheet" href="css/index.1.0.css" />
+   	<script>
+	   		//百度统计
+			var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "https://hm.baidu.com/hm.js?8d6277cc5fcfc1ad29a1be2c3504abba";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+   	
+  </head>
+  <body class=' '>
+  
+    <!-- 顶部app推广下载条 -->
+    <div class="app-popularize doubletap-disable">
+      
+      
+      <a  href="http://a.app.qq.com/o/simple.jsp?pkgname=com.t20000.lvji" target='_blank'>
+        <img class="hide-ele" src='images/lvjiapp2-logo.png' alt='上海世纪公园' />
+        <p class='scenic-name hide-ele'>上海世纪公园</p>
+        <p class='slogan'>提前下载离线包，节省90%流量！</p>
+        <span class='btn'></span>
+      </a>
+      <div id='closePopularize' class="close-btn"></div>
+    </div>
+    
+    <div id="map"></div>
+    
+    <div class="rightTop-btns doubletap-disable">
+       	<div class='ad-container'>
+            
+<!-- 			            <a class="ad" target="_blank" href="/web/scenicGuideshowScenicGuideDetail?id=360">
+                <span class="Ht-icon" style="background-image: url('/cm/fileOpviewFile?fileName=mimi-002_1459324418302-jh8vf3jp.png');"></span>
+                <span class="title">特产</span>
+            </a>
+            <a class="ad" target="_blank" href="/web/scenicGuideshowScenicGuideDetail?id=361">
+                <span class="Ht-icon" style="background-image: url('/cm/fileOpviewFile?fileName=mimi-002_1459324426600-g4xl0k39.png');"></span>
+                <span class="title">图集</span>
+            </a>
+            <a class="ad" target="_blank" href="/web/scenicGuideshowScenicGuideDetail?id=362">
+                <span class="Ht-icon" style="background-image: url('/cm/fileOpviewFile?fileName=mimi-002_1459324437073-v72z3lyw.png');"></span>
+                <span class="title">游记</span>
+            </a> -->
+           </div> 
+           <div class="other-btns no-ad ">
+           		<div class="help-icon"></div>
+           							
+	            	<div id="autoPlay" class='auto-play'></div>	                
+	            
+           </div>   	
+    </div>
+    
+    <div id="mapLocateBtn" class='local-btn doubletap-disable'></div>
+	<div  class="error-correction doubletap-disable"></div>
+	<div  class="zoom-control doubletap-disable">
+		<span class="zoombtn add"></span><span class="zoombtn minu"></span>
+	</div>
+    <ul id="scenicTool" class="scenic-tool doubletap-disable">
+         <li class="road"><span>推荐线路</span></li>
+         <li class="list"><span>景点列表</span></li>
+         <li class="audio"><span>语音类型</span></li>
+    </ul>   
+    <!--一些弹框  路线、语音类型、投诉等 -->
+    <div class="modals doubletap-disable">
+    
+    	<!-- 广告弹窗 -->
+	      <div class='advertisement-wrap modal close-by-self'>
+	        <div class='advertisement'>
+	          
+	          <div class='looklook' style="background: #000"></div>
+	        </div>
+	        
+	        <div id="confirmYes" class="confirm-on"></div>
+	        
+	      </div>
+	        <!--一推荐路线菜单 -->
+		    <div  class="roads-list-wrapper tool-nav modal ">
+				  <dt>
+				  		<span class="title-nav"><span class="title">上海世纪公园</span><em>（1条推荐路线）</em></span>
+				  		<span class="close-btn close-icon" ></span>
+		          </dt>
+		          <div id="roadsListScroll" class="scroll enable-touchmove ">
+			          <ul id="recommendRoad">
+			          </ul>
+		          </div>
+	        </div>	
+	        <!--一推荐路线菜单结束--> 
+	        <!-- 景点列表 -->
+    		<div class="scenicList-nav tool-nav  modal ">
+
+			  <dt>
+			  		<span class="title-nav"><span class="title">上海世纪公园</span><em>（33个景点）</em></span>
+			  		<span class="close-btn close-icon" ></span>
+				    <input type="text" autocomplete="off" autocorrect="off" id="spotsSearch" placeholder="请输入景点">
+				    
+	          </dt>
+			  <div id="sceniclistWrap" class="sceniclist-wrap enable-touchmove scroll ">
+			    <ul id="sceniclist">
+			
+			    </ul>
+			  </div>
+		   </div>
+		   <!-- 景点结束列表 -->
+    		<!--一语音类型菜单 -->
+		    <div  class="audio-list-wrapper tool-nav modal  ">
+				  <dt>
+				  		<span class="title-nav"><span class="title">上海世纪公园</span><em>（种语音类型）</em></span>
+				  		<span class="close-btn close-icon" ></span>
+		          </dt>
+		          <div id="audioListScroll" class="scroll enable-touchmove ">
+			          <ul id="audioList" class="audio-types">
+			   		      
+			                 
+			                 
+			                       
+			                		  
+			                            
+			                            
+			                            		
+			                            
+			
+			                         
+			                     <li class="default" audioId="1-2">
+			                         
+			                         
+			                             <i style="background-image: url('https://map.365daoyou.cn/cm/fileOpviewFile?fileName=mimi-001_1412910390511-rdskl4m7.png');"></i>
+			                         
+			                         <span class="sTxt">御姐女神</span>
+			                     </li>
+			                 
+			             
+			          </ul>
+		          </div>
+	        </div>
+	        <!--一语音类型菜单 结束-->
+	        
+	        
+	        
+	      <!-- 景点详情  -->
+	      <div class="modal viweDetails scenic">
+	        <div class="header">
+	          <div class="go-to-here bindgo-to-here"></div>
+	          <h3></h3>
+	          <div class="close-btn close-icon"></div>
+	        </div>
+	        <div id="scenicContant" class="container loading">
+	          <div class="content"></div>
+	        </div>
+	      </div> 
+       	 <!-- 景点详情 结束 -->
+       	<!-- 帮助详情  -->
+	      <div class="modal viweDetails help ">
+	        <div class="header">
+	          <h3>帮助中心</h3>
+	          <div class="close-btn close-icon"></div>
+	        </div>
+	        <div id="userHelpContant" class="container loading">
+	          <div class="content"></div>
+	        </div>
+	      </div>
+       	 <!-- 帮助详情结束  -->
+       	 <!--feedbacks-->
+       	<div id='feedBackDom' class="modal  feedbacks ">
+	        <div class='header'>
+	          <div class='back'></div>
+	          <div class='title'>建议与反馈</div>
+	          <div class="close-btn close-icon"></div>
+	        </div>
+	        <div  class='feed-choose'>
+	          <div class='feedback-tip' >使用中遇到问题？可尝试联系驴迹客服！</div>
+	          <dl>
+	            <dt error-text='地图问题'><span class='error map'></span> </dt>
+	            <dt error-text='语音问题'><span class="audio_error error"></span></dt>
+	            <dt error-text='功能问题'><span class="function_error error"></span></dt>
+	            <dt error-text='其他'><span class="others_error error"></span></dt>
+	          </dl>
+	          <div class="feedback-foot">
+	            <a class='feedBack-tle' href="tel:02029878842"></a>
+	          </div>
+	        </div>
+	        <div class='inupt-div'>
+	          <form action="#" id="backform">
+	            <lable class='tel-number'>
+	            <span>手机号：</span>
+	            <input id="telNumber" name='telNumber' type="tel"  placeholder='请输入您的手机号' autocomplete='off'>
+	            </lable>
+	            <lable class='textarea-lable'>
+	            <span>描 &nbsp;&nbsp;述：</span>
+	            <textarea class='textarea' placeholder='请写下您的宝贵建议，驴小迹一定会认真改进的呢“^_^”！'></textarea>
+	            </lable>
+	            
+	            <div class='submit-nav'><div class='submit disable'></div>  </div>
+	          </form>
+	          <div class='error-tip'></div>
+	        </div>
+      </div>
+      <!--feedbacks-->
+      <!-- 未授予地理位置的权限-->
+      <div class="reject-local-box modal ">
+           <div class="reject-header">温馨提示</div>  
+           <div class="reject-content">您未授予地理位置的权限，我们无法为您开启自动导游及定位功能，请尝试使用其它浏览器打开或重新授予地理位置的权限。
+                   <div class="leave close-icon"></div>
+           </div>  
+       </div>
+      <!-- 未授予地理位置的权限-->
+      
+      <div class="verify-wrap modal" >
+        <div class='close-btn close-icon'></div>
+        <dl>
+          <dt>授权激活</dt>
+          <dd class="dd-icon"></dd>
+          <dd class="dd-input"><textarea></textarea></dd>
+          <dd class="dd-txt">
+            <p class="input-null"><span class='error-icon'></span>授权码为空 <br>亲，请输入授权码或粘贴短信！</p>
+            <p class="input-error"><span class='error-icon'></span>授权码有误 <br>亲，请输入正确的授权码！</p>
+            <p class="ptxt1">亲，直接复制含有授权码的短信至授权码验证框内，驴小迹会为您自动识别噢！</p>
+            <p class="ptxt2"><span class='error-icon'></span>验证失败<br>授权码无效，请确认后重试！</p>
+            <p class="ptxt2-1"><span class='error-icon'></span>验证失败<br>授权码无效，请尝试手动输入！</p>
+            <p class="ptxt3"><span class='error-icon'></span>授权码已过期，请重新购买<br><span class='expire-tip'>有效时间：<span class="s1"></span>-<span class="s2"><span></span></p>
+          </dd>
+          <dd class="success-tip">
+            亲爱的游客您好，上海世纪公园的智能导游服务已激活，有效期至<br>
+            <span class='date'></span>
+          </dd>
+          <!-- 如果是不显示立即购买按钮的情况，隐藏立即购买按钮，只显示立即激活按钮 -->
+          <dd class="dd-footer ">
+            <a class="a-buy" href="/web/orderpreOrderDetail?scenicId=99&distributorId=12">立即购买</a>
+            <a class="a-activate" href="javascript:void(0)">验证授权</a>
+          </dd>
+          
+          <span class='understand'>知道了</span>
+        </dl>
+      </div>
+    </div>
+    <div class="message doubletap-disable"></div>
+
+	<!--一modals结束 -->
+   
+
+    <script type="text/javascript" src='js/jquery-1.7.2.min.js'></script>    
+    <!-- 引用leaflet.js组件 -->
+    <script type="text/javascript" src="js/leaflet.1.1.0.min.js" ></script>
+    <!--地图操作及DOM操作-->
+    <script type="text/javascript" src='js/index.1.0.js'></script> 
+    <script>
+    	$(function(){
+    		var c=commonMethod;
+	    	c.filePath="https://map.365daoyou.cn/cm/fileOpviewFile?fileName=";
+       		c.path="";
+    		c.singleAndroidAppLink="";
+    		c.singleIosAppLink="";
+			c.singleLogo=c.path+'/cm/fileOpviewFile?fileName=mimi-001_1472644954317-t8k4nfdq.png';
+			
+			setDownloadUrl();//设置下载条的URL
+			
+			c.isAuthUrl="/web/authCodevalidAuthCode?code=";
+	    	c.scenicId="99";
+	    	c.distributorId='12';
+	    	c.scenicName="上海世纪公园";
+	    	c.audioPath=c.isiOS?'https://map.365daoyou.cn/cm/fileOpviewFile?fileName=':'https://map.365daoyou.cn/cm/fileOpviewRangeFile?fileName=';
+	    	c.audioType = "";//音频类型;
+	    	(c.isUC||c.isHuawei||c.isOppo)&&(c.audioPath='https://map.365daoyou.cn/cm/fileOpviewFile?fileName=');
+	    	
+	  	    	
+	  	    		 c.needVerify=true;
+	  	    	
+	  	    	
+	  	    
+	    	c.mapData={
+	    			//leftTop:[31.2226536851,121.5395478128],
+	    			rightTop:[31.21544405783563,121.6315269470215],
+	    			//leftBottom:[23.157994,113.397092],
+	    			leftBottom:[31.208617191429184,121.62081956863405],
+	    			//rightBottom:[31.2099183834,121.5640737218],
+	    			zoom:7,
+	    			zoomRange:[17.0,18.6],
+	    			hideTitZoom:6,
+	    			markers:[],
+	    			serviceMarkers:[],
+	    			imageLayer:[],
+	    			tileSrc:[]
+	    			
+	    	}
+	    	
+	    	c.mapData.bounds= L.bounds([c.mapData.rightTop,c.mapData.leftBottom]);
+	    	c.mapData.center=[c.mapData.bounds.getCenter().x,c.mapData.bounds.getCenter().y];
+	    	
+	    	var temporaryMarkerObj;
+	        
+	        	temporaryMarkerObj={
+	            		viweID: '715',
+	    	            viweName: '出入口',
+	    	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1499133654110-k00xp2nw.jpg',
+	    	            viweType:'nearService',
+	    	            introduction: '',
+	    	            leftBtnName: '厕所',
+	    	            leftBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            rightBtnName: '厕所',
+	    	            rightBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            icon: '/cm/fileOpviewFile?fileName=mimi-001_1504506060552-yigxjhgy.png'        			
+	        	};
+	        	
+	        	 	temporaryMarkerObj.position = [31.219858,121.551491];
+	        	 	c.mapData.serviceMarkers.push(temporaryMarkerObj);
+		        
+	        
+	        	temporaryMarkerObj={
+	            		viweID: '716',
+	    	            viweName: '出入口',
+	    	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1499133672903-uafbkw9v.jpg',
+	    	            viweType:'nearService',
+	    	            introduction: '',
+	    	            leftBtnName: '厕所',
+	    	            leftBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            rightBtnName: '厕所',
+	    	            rightBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            icon: '/cm/fileOpviewFile?fileName=mimi-001_1504506060552-yigxjhgy.png'        			
+	        	};
+	        	
+	        	 	temporaryMarkerObj.position = [31.217678,121.546155];
+	        	 	c.mapData.serviceMarkers.push(temporaryMarkerObj);
+		        
+	        
+	        	temporaryMarkerObj={
+	            		viweID: '717',
+	    	            viweName: '出入口',
+	    	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1499133695676-aqg2pj6p.jpg',
+	    	            viweType:'nearService',
+	    	            introduction: '',
+	    	            leftBtnName: '厕所',
+	    	            leftBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            rightBtnName: '厕所',
+	    	            rightBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            icon: '/cm/fileOpviewFile?fileName=mimi-001_1504506060552-yigxjhgy.png'        			
+	        	};
+	        	
+	        	 	temporaryMarkerObj.position = [31.216502,121.560718];
+	        	 	c.mapData.serviceMarkers.push(temporaryMarkerObj);
+		        
+	        
+	        	temporaryMarkerObj={
+	            		viweID: '718',
+	    	            viweName: '出入口',
+	    	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1499133711082-utfskkbg.jpg',
+	    	            viweType:'nearService',
+	    	            introduction: '',
+	    	            leftBtnName: '厕所',
+	    	            leftBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            rightBtnName: '厕所',
+	    	            rightBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            icon: '/cm/fileOpviewFile?fileName=mimi-001_1504506060552-yigxjhgy.png'        			
+	        	};
+	        	
+	        	 	temporaryMarkerObj.position = [31.214241,121.561005];
+	        	 	c.mapData.serviceMarkers.push(temporaryMarkerObj);
+		        
+	        
+	        	temporaryMarkerObj={
+	            		viweID: '719',
+	    	            viweName: '出入口',
+	    	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1499133729821-ftxuw3gp.jpg',
+	    	            viweType:'nearService',
+	    	            introduction: '',
+	    	            leftBtnName: '厕所',
+	    	            leftBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            rightBtnName: '厕所',
+	    	            rightBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            icon: '/cm/fileOpviewFile?fileName=mimi-001_1504506060552-yigxjhgy.png'        			
+	        	};
+	        	
+	        	 	temporaryMarkerObj.position = [31.213016,121.556753];
+	        	 	c.mapData.serviceMarkers.push(temporaryMarkerObj);
+		        
+	        
+	        	temporaryMarkerObj={
+	            		viweID: '720',
+	    	            viweName: '出入口',
+	    	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1499133749605-ijsur1rk.jpg',
+	    	            viweType:'nearService',
+	    	            introduction: '',
+	    	            leftBtnName: '厕所',
+	    	            leftBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            rightBtnName: '厕所',
+	    	            rightBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            icon: '/cm/fileOpviewFile?fileName=mimi-001_1504506060552-yigxjhgy.png'        			
+	        	};
+	        	
+	        	 	temporaryMarkerObj.position = [31.211969,121.544346];
+	        	 	c.mapData.serviceMarkers.push(temporaryMarkerObj);
+		        
+	        
+	        	temporaryMarkerObj={
+	            		viweID: '721',
+	    	            viweName: '出入口',
+	    	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1499133819320-llpvl8xo.jpg',
+	    	            viweType:'nearService',
+	    	            introduction: '',
+	    	            leftBtnName: '厕所',
+	    	            leftBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            rightBtnName: '厕所',
+	    	            rightBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            icon: '/cm/fileOpviewFile?fileName=mimi-001_1504506060552-yigxjhgy.png'        			
+	        	};
+	        	
+	        	 	temporaryMarkerObj.position = [31.220951,121.556508];
+	        	 	c.mapData.serviceMarkers.push(temporaryMarkerObj);
+		        
+	        
+	        	temporaryMarkerObj={
+	            		viweID: '722',
+	    	            viweName: '出入口',
+	    	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1499133839262-zbei3fi0.jpg',
+	    	            viweType:'nearService',
+	    	            introduction: '',
+	    	            leftBtnName: '厕所',
+	    	            leftBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            rightBtnName: '厕所',
+	    	            rightBtnImgUrl: '/cm/fileOpviewFile?fileName=',
+	    	            icon: '/cm/fileOpviewFile?fileName=mimi-001_1504506060552-yigxjhgy.png'        			
+	        	};
+	        	
+	        	 	temporaryMarkerObj.position = [31.211323,121.550511];
+	        	 	c.mapData.serviceMarkers.push(temporaryMarkerObj);
+		        
+	        
+	        
+	         	 temporaryMarkerObj={
+	    	            viweID: '5998',
+	      	            viweName: '奥尔梅加头像',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459435295180-lm0ilffn.jpg',
+	      	            introduction: '陛下，这个头像石雕就是鼎鼎有名的“奥尔梅加头像8号”的复制品，奥尔......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=5998',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1421913537484-hn4syy8p.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.215103,121.559291],
+	                    [31.215103,121.560203],
+	                    [31.214552,121.560203],
+	                    [31.214552,121.55928]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.214809,121.559763];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2255',
+	      	            viweName: '春园',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434828260-0h87jlhj.jpg',
+	      	            introduction: '春园位于镜天湖的西南角，占地 0.6 公顷。园内种有梅花、腊梅、迎......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2255',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476275393-fls9tvjz.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.213717,121.548444],
+	                    [31.213699,121.54956],
+	                    [31.212754,121.549581],
+	                    [31.212745,121.548455]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.213222,121.549034];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2241',
+	      	            viweName: '东方虹珠盆景园',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434827082-pnui9b7d.jpg',
+	      	            introduction: '陛下，听到这个名字，有什么想法呢。其实四季园就如同它字面上的意思，......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2241',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476648435-xecxojoz.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.220571,121.55766],
+	                    [31.220562,121.558712],
+	                    [31.219819,121.55869],
+	                    [31.219846,121.557703]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.220213,121.558186];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2231',
+	      	            viweName: '冬园',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434826664-icc9k786.jpg',
+	      	            introduction: '陛下，冬园位于森林群落景区，占地 0.3 公顷。每当寒冬降临，园内......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2231',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476761885-593gq55q.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.212387,121.547725],
+	                    [31.212378,121.548702],
+	                    [31.211643,121.548734],
+	                    [31.211625,121.547672]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.211983,121.548197];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '3980',
+	      	            viweName: '风景林区',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459435024259-agjt27er.jpg',
+	      	            introduction: '启奏陛下，我们现在来到的是风景林区，听说风景林区最好看的就是延河有......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=3980',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1419322379768-63tsz62p.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.213809,121.544668],
+	                    [31.213772,121.545966],
+	                    [31.212616,121.545934],
+	                    [31.212735,121.54456]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.213231,121.545333];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2227',
+	      	            viweName: '高尔夫会所',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434826226-9vcdrip1.jpg',
+	      	            introduction: '启奏陛下，园内还有个小型的高尔夫球场区，位于公园的西侧，会所面积 ......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2227',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476904171-ef1b6ok0.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.21246,121.543187],
+	                    [31.212469,121.544174],
+	                    [31.211992,121.544163],
+	                    [31.211992,121.543208]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.212222,121.54367];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2224',
+	      	            viweName: '观景平台',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434825812-juh7lyi8.jpg',
+	      	            introduction: '在镜天湖北侧，有一个观景平台，上下呈四层阶梯状。沿着平台拾级而上，......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2224',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416477029277-fzjurhp6.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.21769,121.549292],
+	                    [31.217672,121.549892],
+	                    [31.217268,121.549882],
+	                    [31.21725,121.549292]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.217442,121.549603];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2230',
+	      	            viweName: '湖滨观景区 ',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434826488-ksx92s2s.jpg',
+	      	            introduction: '湖滨区正对着世纪大道的终点，里面坐落着公园的标志性建筑——世纪花钟......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2230',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476798123-3bn3rhki.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.217965,121.547951],
+	                    [31.217965,121.549249],
+	                    [31.217277,121.549238],
+	                    [31.217222,121.547951]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.217626,121.548541];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2219',
+	      	            viweName: '镜天湖',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434825209-nv24mw36.jpg',
+	      	            introduction: '步入世纪公园1号门，映入眼帘的便是面积为12.5公顷的镜天湖。它由......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2219',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416477268217-59s2if7n.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.216864,121.547682],
+	                    [31.216791,121.550472],
+	                    [31.214534,121.550515],
+	                    [31.214552,121.547618]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.215708,121.548991];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '3987',
+	      	            viweName: '卵石沙滩',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459435025369-seagzmbr.jpg',
+	      	            introduction: '陛下，卵石沙滩位于镜天湖的南侧，沿镜天湖岸曲折延伸，由礁石滩、卵石......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=3987',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1419321741167-0uuhdab4.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.212901,121.549667],
+	                    [31.212901,121.550504],
+	                    [31.212304,121.550504],
+	                    [31.212304,121.549656]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.21257,121.550096];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '3982',
+	      	            viweName: '绿色世界浮雕墙 ',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459435024530-qki6e9xn.jpg',
+	      	            introduction: '这一面浮雕墙，由花岗石制成，全长80米，总面积178平方米，作品展......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=3982',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1419322112586-yb2arw0q.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.217947,121.551008],
+	                    [31.217892,121.552038],
+	                    [31.217589,121.552081],
+	                    [31.217598,121.550955]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.217745,121.55133];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '3981',
+	      	            viweName: '李白纪念雕像  ',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459435024386-vjznukpd.jpg',
+	      	            introduction: ' 陛下，我们现在看到的是李白纪念雕像。您一定觉得很奇怪，李白不是诗......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=3981',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1419322181151-gzm5gfqj.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.218323,121.55015],
+	                    [31.218296,121.55088],
+	                    [31.217828,121.55089],
+	                    [31.2178,121.550139]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.218094,121.55059];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2226',
+	      	            viweName: '迷你高尔夫球场',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434826082-6n4oips6.jpg',
+	      	            introduction: '陛下，迷你高尔夫球场区位于公园的西面，属于八号门区域，是一座符合国......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2226',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476944879-s47jum5x.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.214185,121.542425],
+	                    [31.214185,121.544077],
+	                    [31.212579,121.544088],
+	                    [31.21257,121.542425]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.213387,121.543187];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2245',
+	      	            viweName: '鸟类保护区',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434827676-kk01ykpa.jpg',
+	      	            introduction: '鸟类保护区位于公园的中心区域。这是上海其他公园不多有的鸟类保护岛屿......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2245',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476360712-suqpjksq.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.21803,121.554023],
+	                    [31.218021,121.555514],
+	                    [31.216929,121.555514],
+	                    [31.216938,121.554012]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.217452,121.554806];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2244',
+	      	            viweName: '鸟岛',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434827522-00gdvrwo.jpg',
+	      	            introduction: '陛下，我们来到鸟岛了，是不是很有趣呢？陛下听到这个名字首先想到的会......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2244',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476634255-6e6sud9m.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.216892,121.554023],
+	                    [31.216883,121.554753],
+	                    [31.216424,121.554785],
+	                    [31.216433,121.55398]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.216653,121.55442];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '3985',
+	      	            viweName: '浦东新区文化雕塑广场',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459435024990-pvlwiezp.jpg',
+	      	            introduction: '陛下，在这里您可以看到根据电影《永不消逝的电波》中主人公原型李白再......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=3985',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1419321875108-3irrip0p.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.221443,121.556641],
+	                    [31.221415,121.557617],
+	                    [31.220947,121.557617],
+	                    [31.220947,121.556609]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.221241,121.557102];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2217',
+	      	            viweName: '秋园',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434824917-5c9e7l5e.jpg',
+	      	            introduction: '秋园和夏园一样位于森林群落景区，占地 0.3 公顷。每当秋季来临，......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2217',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416477449716-lbxnh0xk.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.212488,121.550708],
+	                    [31.212497,121.552081],
+	                    [31.211708,121.552103],
+	                    [31.211699,121.550708]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.212084,121.551448];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2214',
+	      	            viweName: '七号门',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434824631-vwz5r5v5.jpg',
+	      	            introduction: '启奏陛下，世纪公园的七号门处设有售票点及卫生间，从七号门进去以后就......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2214',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416477569408-rrwfi4al.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.212102,121.549614],
+	                    [31.212102,121.550579],
+	                    [31.211616,121.550622],
+	                    [31.211478,121.549614]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.211845,121.550171];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2254',
+	      	            viweName: '疏林草坪区',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434828112-kk52lbbo.jpg',
+	      	            introduction: '在世纪公园南面的七号门区域，有一处疏林草坪区，区内的南山逶迤起伏、......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2254',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476293550-1n6bjf6w.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.214341,121.552038],
+	                    [31.214341,121.553444],
+	                    [31.213589,121.553433],
+	                    [31.213589,121.55207]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.213956,121.552757];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2240',
+	      	            viweName: '三号门',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434826935-3h1qmas5.jpg',
+	      	            introduction: '三号门是世纪公园建成开放的第一扇大门，也是世纪公园规模最大的入口，......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2240',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476687636-2iyj4fse.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.220892,121.556512],
+	                    [31.220883,121.557585],
+	                    [31.220324,121.557607],
+	                    [31.220333,121.556555]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.220635,121.557016];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2225',
+	      	            viweName: '世纪花钟',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434825950-za669p11.jpg',
+	      	            introduction: '世纪花钟是世纪公园标志性景点，它背靠镜天湖，面向世纪大道。圆形的花......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2225',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476977538-1zxce70s.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.217571,121.54647],
+	                    [31.217571,121.547532],
+	                    [31.216736,121.547543],
+	                    [31.216736,121.546481]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.217186,121.546953];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2221',
+	      	            viweName: '卧波桥',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434825551-0uv9tkew.jpg',
+	      	            introduction: '陛下，我们现在来到的是世纪公园的“卧波桥”，臣（臣妾）认为卧波桥的......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2221',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416477158080-ko5zs149.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.216901,121.552135],
+	                    [31.216901,121.552768],
+	                    [31.216424,121.552768],
+	                    [31.216415,121.552113]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.21669,121.552446];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2218',
+	      	            viweName: '宛溪戏水（溪流）',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434825068-d8718xry.jpg',
+	      	            introduction: '陛下，宛溪戏水位于南山疏林草坪区，溪流长达 500 余米。溪流从南......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2218',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416477333258-2p9qxf89.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.213268,121.550643],
+	                    [31.213258,121.551588],
+	                    [31.212634,121.551577],
+	                    [31.212662,121.550643]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.212937,121.551094];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2248',
+	      	            viweName: '乡土田园区',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434827818-qdjmiqul.jpg',
+	      	            introduction: '大都市的高楼大厦恰似一个个囚笼，将不同地方不同背景的人圈在一起，人......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2248',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476338558-x61ibvq2.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.220314,121.555128],
+	                    [31.220278,121.556501],
+	                    [31.219305,121.556501],
+	                    [31.219305,121.555128]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.219819,121.555772];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2216',
+	      	            viweName: '夏园',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434824766-ni8lgd8v.jpg',
+	      	            introduction: '启禀陛下，夏园位于森林群落景区，占地 0.5 公顷，每当盛夏季节，......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2216',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416477502049-6a75fl7b.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.213901,121.549732],
+	                    [31.213873,121.550601],
+	                    [31.213121,121.55059],
+	                    [31.213112,121.549732]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.213497,121.550139];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '3986',
+	      	            viweName: '樱花岛',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459435025120-iihymxsn.jpg',
+	      	            introduction: '樱花岛于2013年3月建成，地处公园中央的半岛区域，四周水系拥抱，......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=3986',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1419321775212-0vzxdfw5.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.21536,121.552897],
+	                    [31.215378,121.554356],
+	                    [31.214681,121.554356],
+	                    [31.214644,121.552875]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.214993,121.553712];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '3984',
+	      	            viweName: '玉兰花林',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459435024821-w8lbfgho.jpg',
+	      	            introduction: '玉兰为木兰花科植物，同种族中有紫玉兰、二乔玉兰、还有含笑、木兰等等......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=3984',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1419321914397-jfmml3gk.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.219268,121.553583],
+	                    [31.21925,121.554742],
+	                    [31.218314,121.55472],
+	                    [31.218314,121.553519]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.218755,121.554184];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '3983',
+	      	            viweName: '游乐园',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459435024680-5256nk20.jpg',
+	      	            introduction: '   公园的北部就是世纪公园的游乐园，陛下，里面有碰碰车、天空漫步......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=3983',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1419321932130-ytewsw4d.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.218892,121.551504],
+	                    [31.218892,121.552609],
+	                    [31.218002,121.55262],
+	                    [31.217984,121.551536]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.21847,121.552073];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2252',
+	      	            viweName: '异国园区',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434827976-33r1xnit.jpg',
+	      	            introduction: '上海是一个开放的发达城市，所以当初在设计公园的时候，也加入了很多外......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2252',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476315574-ocw2plbu.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.216699,121.558551],
+	                    [31.216681,121.560042],
+	                    [31.215497,121.560053],
+	                    [31.215488,121.558508]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.216085,121.559345];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2243',
+	      	            viweName: '缘池',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434827350-xa1lkwcr.jpg',
+	      	            introduction: '缘池位于乡土田园区，是园内最早挖掘的人工湖泊，面积2800平方米。......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2243',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476615658-oozrpnha.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.219782,121.556577],
+	                    [31.219773,121.557435],
+	                    [31.218911,121.557435],
+	                    [31.21892,121.556566]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.219323,121.556984];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2229',
+	      	            viweName: '音乐广场',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434826355-ed1c5dow.jpg',
+	      	            introduction: '我们这就来到公园内的露天音乐广场了，倚坡而建的露天剧场位于世纪公园......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2229',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416476860063-t5eaq0ba.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.214827,121.545987],
+	                    [31.214791,121.547275],
+	                    [31.213616,121.547275],
+	                    [31.21358,121.546094]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.214148,121.546631];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2222',
+	      	            viweName: '云帆桥',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434825678-7ydul0pk.jpg',
+	      	            introduction: '陛下，云帆桥位于世纪公园中央，西临镜天湖，东依公园生态湖泊——鸟类......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2222',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416477085304-030konyd.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.216557,121.551121],
+	                    [31.216562,121.551598],
+	                    [31.215965,121.551604],
+	                    [31.215961,121.551116]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.216268,121.551362];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+	         	 temporaryMarkerObj={
+	    	            viweID: '2220',
+	      	            viweName: '音乐喷泉',
+	      	            viweImgUrl: '/cm/fileOpviewFile?fileName=mimi-001_1459434825413-p8yjx2mc.jpg',
+	      	            introduction: '陛下请看，此处有个大型喷泉，人称群龙追月，是公园内的一处特色景点，......',
+	      	            detailsURL: '/web/subScenicshowSubScenicDetail?id=2220',
+	      	            audioUrl:{}
+	      	           };
+	           
+		            
+		           		 temporaryMarkerObj.audioUrl['audioId1-2']= c.audioPath+'mimi-001_1416477223716-fmnk8vud.mp3';
+		            
+		        
+	            
+	             temporaryMarkerObj.area=[
+	                    [31.217764,121.550289],
+	                    [31.217782,121.552006],
+	                    [31.216892,121.551995],
+	                    [31.216892,121.550289]
+	                ];
+	            
+	        	
+		    	 	temporaryMarkerObj.position = [31.217351,121.551137];
+		         	 c.mapData.markers.push(temporaryMarkerObj);
+		         
+	  	    
+
+             //添加图层数据
+			 
+		        	c.mapData.imageLayer.push({
+		                 'imageUrl':'https://map.365daoyou.cn/cm/fileOpviewFile?fileName=mimi-001_1510297121693-mo2t8xs2.jpg',
+		                 'imageBounds':[
+						 [31.21544405783563,121.6315269470215],
+						 [31.208617191429184,121.62081956863405]
+		                               ]
+		             }); 
+		        
+		        
+	        
+ 
+		    var lineTrack = {};	    
+
+	        
+		        lineTrack['全景游']=[];
+		        
+	              
+	            	lineTrack['全景游'].push({'position': '121.546,31.21781', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.54711,31.21713', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.54819,31.21636', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.54837,31.216286', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.5491,31.216782', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55019,31.217167', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55134,31.217232', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55201,31.217728', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55279,31.218313', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55371,31.218891', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55427,31.219278', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55505,31.219856', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.555786,31.22036', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.5562,31.220617', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.556526,31.22049', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.556816,31.220425', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55722,31.220451', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55812,31.2199', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55822,31.21935', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55778,31.21881', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55716,31.21848', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55609,31.218443', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55618,31.21803', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55637,31.217405', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.556404,31.217003', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.556725,31.216534', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55699,31.216242', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55696,31.215965', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.556595,31.215414', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55604,31.214993', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55527,31.214571', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.554756,31.214571', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.554535,31.214497', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55374,31.214771', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55304,31.21481', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55265,31.214682', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55201,31.213964', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.5513,31.214167', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.5507,31.21334', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.550545,31.212936', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.55031,31.212534', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.54995,31.212387', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.54933,31.21247', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.54882,31.21291', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.54827,31.212965', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.547775,31.21289', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.547264,31.213285', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.54731,31.213919', 'mark': '1'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.54739,31.214535', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.54772,31.215616', 'mark': '2'});                
+	              
+	            	lineTrack['全景游'].push({'position': '121.54816,31.216122', 'mark': '2'});                
+	            
+	        
+	        
+	        
+    		var domOperateBack=domOperate();
+        	domOperateBack.verify();//验证是否激活
+         	
+         	if(c.distributorId!="140"){ //有品味特殊处理，去掉广告窗和app下载条
+         		domOperateBack.showAd(); //显示广告弹窗
+         	}else{
+         		$("#closePopularize").trigger(c.clickEvent);
+         	}
+			
+        	if(c.urlArg.weChat=="true"){
+        		$(".a-buy").attr("href",$(".a-buy").attr("href")+"&weChat=true");
+
+    			if(!(c.token&&c.userId)){
+    				
+    				$(".a-buy").attr("href","login.html?redirection=true");
+
+					if(c.isiOS){
+	    				window.addEventListener("pageshow", function(){
+	    					
+	    			        if(sessionStorage.myOrderGoBack==1){
+	    			          location.reload();
+	    			          sessionStorage.setItem('myOrderGoBack',2);
+	    			        }
+	    				})
+					}
+    				
+    			}
+    			
+        	}
+
+		    function intiMap(){ //
+		    	console.log(
+                    JSON.stringify( {  //新建一个地图对象
+		    		container:"map",
+		    		scenicName:c.scenicName,
+		    		center:c.mapData.center,
+		    		zoom:c.mapData.zoom,
+	                zoomControl:false,
+	                // minZoom:7||c.mapData.zoomRange[0],
+	                minZoom:c.mapData.zoomRange[0]||7,
+
+	                maxZoom:c.mapData.zoomRange[1]||19, 
+	                zoomAnimationThreshold:1,
+	                maxBounds:[c.mapData.rightTop,c.mapData.leftBottom]
+		    	})
+                   
+                )
+			    c.map=new LaeflatMapModule({  //新建一个地图对象
+		    		container:"map",
+		    		scenicName:c.scenicName,
+		    		center:c.mapData.center,
+		    		zoom:c.mapData.zoom,
+	                zoomControl:false,
+	                // minZoom:7||c.mapData.zoomRange[0],
+	                minZoom:c.mapData.zoomRange[0]||7,
+
+	                maxZoom:c.mapData.zoomRange[1]||19, 
+	                zoomAnimationThreshold:1,
+	                maxBounds:[c.mapData.rightTop,c.mapData.leftBottom]
+		    	});
+		    
+				function addImageLayers(){}
+				
+   				
+                    
+                    
+				    	function addImageLayers(){
+						    for(var i=0,len=c.mapData.imageLayer.length;i<len;i++){ //添加图层	   
+						    	 
+							    
+						      	c.map.addImageLayer(c.mapData.imageLayer[i],c.mapData.imageLayer[i].subMap);
+						    
+
+
+						    }
+				    	}
+                    
+                
+
+
+	   
+
+
+			    c.map.autoZoomRange();//自动设置地图大小 
+			   // c.map.map.addLayer(L.tileLayer.chinaProvider('GaoDe.Normal.Map', {maxZoom:18,minZoom: 7}))
+
+			    c.mapData.serviceMarkers.length&&c.map.addMarkers(c.mapData.serviceMarkers);
+			    c.mapData.markers.length&&c.map.addMarkersC(c.mapData.markers); //添加marker点
+		    	c.map.lineData=lineTrack;//绑定路线数据	
+		    	//c.getOrientation();
+		    	c.orientation=false;
+			    c.map.startLocate(); //开始定位
+			    domOperateBack.domOperateForMap(c.map);//给map元素绑定事件
+			    
+			    //取消自动讲解语音提醒
+            	//c.$audio.data("guidePlaying","false");
+            	//c.$audio.data("guidePlayed","true");
+			   
+            	return {
+            		addImageLayers:addImageLayers
+            	}
+		    }
+		    var intiMap=intiMap();
+
+	    	intiMap.addImageLayers();
+	
+		    
+    	})
+    	
+    	
+    </script>
+  </body>
+</html>
