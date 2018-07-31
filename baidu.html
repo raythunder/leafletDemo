@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body,
+        html,
+        #allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=4l6592eCfzmNQBs6P5wSGgmlm2lMWaM3"></script>
+    <title>GPS转百度</title>
+</head>
+
+<body>
+    <div id="allmap"></div>
+</body>
+
+</html>
+<script type="text/javascript">
+    var type3 = [550, 30]; //设定  google  gps格式转换
+    var transTypesParam = "";
+
+    function getLocation() {
+        var options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
+        if (navigator.geolocation) { //用浏览器获取坐标地址
+            navigator.geolocation.getCurrentPosition(showPosition, showError, options);
+        } else {
+            alert("浏览器不支持地理定位。");
+        }
+    }
+
+    //获取浏览器GPS成功
+    function showPosition(position) {
+        var x = position.coords.longitude; //经度 
+        var y = position.coords.latitude; //纬度 
+
+        transTypesParam = getTransType(position.coords.accuracy); //该方法很重要，用来判断手机定位格式，方法在下方
+        console.log('坐标', x, y)
+        var ggPoint = new BMap.Point(x, y);
+        showMap(ggPoint, true); //显示地图坐标
+    }
+
+
+    //获取失败，失败后用百度地图自带的方法，但是定位会不准
+    function showError(error) {
+
+        var geolocation = new BMap.Geolocation();
+        geolocation.getCurrentPosition(function (r) {
+            if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+                showMap(r.point, false);
+            } else {
+                alert('定位失败：' + this.getStatus());
+            }
+        }, {
+            enableHighAccuracy: true
+        })
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                console.log(error.code + "User denied the request for Geolocation.");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                console.log(error.code + "Location information is unavailable.");
+                break;
+            case error.TIMEOUT:
+                console.log(error.code + "The request to get user location timed out.");
+                break;
+            case error.UNKNOWN_ERROR:
+                console.log(error.code + "An unknown error occurred.");
+                break;
+        }
+
+    }
+
+    function getTransType(accuracy) {
+        if (window.localStorage) {
+            var transType = localStorage.getItem("xdlcfwapp_transType");
+            if (transType != null && transType != "") {
+                return transType;
+            }
+        }
+
+        for (var i = 0; i < type3.length; i++) {
+            if (type3[i] == accuracy) {
+                localStorage.setItem("xdlcfwapp_transType", 3);
+                return 3;
+            }
+        }
+        localStorage.setItem("xdlcfwapp_transType", 1);
+        return 1;
+    };
+
+    var bm = null;
+
+    function showMap(ggPoint, isTrans) {
+
+        // 百度地图API功能
+        bm = new BMap.Map("allmap");
+        bm.centerAndZoom(ggPoint, 15);
+        bm.enableScrollWheelZoom(true);
+        if (isTrans) {
+            bm.addControl(new BMap.NavigationControl());
+
+            //坐标转换完之后的回调函数
+            translateCallback = function (data) {
+                if (data.status === 0) {
+                    showPositionIcon(data.points[0]);
+                    queryMarkers();
+                }
+            }
+
+            setTimeout(function () {
+                var convertor = new BMap.Convertor();
+                var pointArr = [];
+                pointArr.push(ggPoint);
+                convertor.translate(pointArr, transTypesParam, 5, translateCallback)
+            }, 1000);
+        } else {
+            showPositionIcon(ggPoint);
+            // queryMarkers();
+        }
+    }
+
+    function showPositionIcon(point){
+        var markergg = new BMap.Marker(point)
+        bm.addOverlay(markergg)
+    }
+    getLocation()
+    // 百度地图API功能
+    //GPS坐标
+    // var x = 116.32715863448607;
+    // var y = 39.990912172420714;
+    // var ggPoint = new BMap.Point(x, y);
+
+    // console.log(ggPoint)
+
+
+    // //地图初始化
+    // var bm = new BMap.Map("allmap");
+    // bm.centerAndZoom(ggPoint, 15);
+    // bm.addControl(new BMap.NavigationControl());
+
+    // //添加gps marker和label
+    // var markergg = new BMap.Marker(ggPoint);
+    // bm.addOverlay(markergg); //添加GPS marker
+    // var labelgg = new BMap.Label("未转换的GPS坐标（错误）", {
+    //     offset: new BMap.Size(20, -10)
+    // });
+    // markergg.setLabel(labelgg); //添加GPS label
+
+
+    // var geolocation = new BMap.Geolocation();
+    // geolocation.getCurrentPosition(function (r) {
+    //     if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+    //         var mk = new BMap.Marker(r.point);
+    //         bm.addOverlay(mk);
+    //         bm.panTo(r.point);
+    //         ggPoint = new BMap.Point(r.point.lng, r.point.lat)
+    //         // alert('您的位置：' + r.point.lng + ',' + r.point.lat);
+    //         setTimeout(function () {
+    //             var convertor = new BMap.Convertor();
+    //             var pointArr = [];
+    //             pointArr.push(ggPoint);
+    //             convertor.translate(pointArr, 1, 5, translateCallback)
+    //         }, 1000);
+    //     } else {
+    //         alert('failed' + this.getStatus());
+    //     }
+    // });
+
+    // //坐标转换完之后的回调函数
+    // translateCallback = function (data) {
+    //     if (data.status === 0) {
+    //         var marker = new BMap.Marker(data.points[0]);
+    //         bm.addOverlay(marker);
+    //         var label = new BMap.Label("转换后的百度坐标（正确）", {
+    //             offset: new BMap.Size(20, -10)
+    //         });
+    //         marker.setLabel(label); //添加百度label
+    //         bm.setCenter(data.points[0]);
+    //     }
+    // }
+</script>
