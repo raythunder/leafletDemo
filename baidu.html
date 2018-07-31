@@ -115,6 +115,7 @@
             //坐标转换完之后的回调函数
             translateCallback = function (data) {
                 if (data.status === 0) {
+                    bm.centerAndZoom(data.points[0], 15)
                     showPositionIcon(data.points[0]);
                     queryMarkers();
                 }
